@@ -49,6 +49,18 @@ class Hotel {
 
     return stars;
   }
+
+  /**
+   * Returns a valid string to include in the url
+   * @return {string} - A string without spaces made with hotel name and city
+   */
+  urlSlug() {
+    let lowCaseName = this.name.toLowerCase();
+    let lowCaseCity = this.city.toLowerCase();
+    let slug = lowCaseName.split(' ').join('_') + '_' + lowCaseCity;
+
+    return slug;
+  }
 }
 
 module.exports = Hotel;
