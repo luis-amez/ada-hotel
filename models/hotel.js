@@ -29,6 +29,16 @@ class Hotel {
 
     return avgRating;
   }
+
+  ratingAsStars() {
+    let stars = '';
+
+    for(let i = 0; i < Math.floor(this.rating()); i++) {
+      stars += '⭐';
+    }
+
+    return stars;
+  }
 }
 
 module.exports = Hotel;
