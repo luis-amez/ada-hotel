@@ -1,4 +1,10 @@
 class Hotel {
+  /**
+   * Hotel constructor
+   * @param {*} name - Hotel name
+   * @param {*} city - City where the hotel is located
+   * @return {Hotel} - An instance of Hotel class
+   */
   constructor(name, city) {
     this.name = name;
     this.city = city;
@@ -6,7 +12,7 @@ class Hotel {
   }
 
   /**
-   * Return how many reviews the hotel has
+   * Returns how many reviews the hotel has
    * @return {number} - The number of reviews for the hotel
    */
   reviewCount() {
@@ -14,7 +20,7 @@ class Hotel {
   }
 
   /**
-   * Return the average rating for the hotel
+   * Returns the average rating for the hotel
    * @return {number} - The average rating
    */
   rating() {
@@ -30,6 +36,10 @@ class Hotel {
     return avgRating;
   }
 
+  /**
+   * Returns a representation of the hotel rating using stars
+   * @return {string} - A string with as many stars as the hotel rating
+   */
   ratingAsStars() {
     let stars = '';
 
