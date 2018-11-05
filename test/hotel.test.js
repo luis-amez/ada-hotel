@@ -2,6 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 
 var Hotel = require('../models/hotel')
+var Review = require('../models/review')
 
 describe('Hotel', function() {
   it('should initialize properly', () => {
@@ -24,5 +25,14 @@ describe('Hotel', function() {
     const hotel = new Hotel('Hilton Metropole', 'London');
 
     expect(hotel.urlSlug()).to.equal('hilton_metropole_london');
+  });
+
+  it('should add a review to an hotel', () => {
+    const hotel = new Hotel('Hilton Metropole', 'London');
+    const review = new Review(5, 'Excellent hotel, very clean', '2018-12-17');
+    hotel.addReview(review);
+
+    expect(hotel.reviews.length).to.equal(1);
+    expect(hotel.reviews).to.deep.equal([review]);
   });
 });
