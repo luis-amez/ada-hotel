@@ -61,6 +61,14 @@ class Hotel {
 
     return slug;
   }
+
+  /**
+   * Adds a review to the hotel's review list
+   * @param {Review} review - The review to be added
+   */
+  addReview(review) {
+    this.reviews.push(review);
+  }
 }
 
 module.exports = Hotel;
