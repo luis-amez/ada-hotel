@@ -47,4 +47,18 @@ describe('Hotel', function() {
     expect(hotel.reviews.length).to.equal(1);
     expect(hotel.reviews).to.deep.equal([review]);
   });
+
+  it('should convert the hotel into a JSON string', () => {
+    const hotel = new Hotel('Hilton Metropole', 'London');
+    const review1 = new Review(5, 'Excellent hotel, very clean', '2018-12-17');
+    const review2 = new Review(1, 'Terrible hotel, smelled of mice', '2018-01-01')
+    hotel.addReview(review1);
+    hotel.addReview(review2);
+    const jsonString = '{"name":"Hilton Metropole","city":"London","reviewCount":2,"rating":3,' + 
+      '"ratingAsStars":"⭐⭐⭐","urlSlug":"hilton_metropole_london","reviews":[{"rating":5,"text":' + 
+      '"Excellent hotel, very clean","date":"2018-12-17T00:00:00.000Z","ratingAsStars":"⭐⭐⭐⭐⭐"},' + 
+      '{"rating":1,"text":"Terrible hotel, smelled of mice","date":"2018-01-01T00:00:00.000Z","ratingAsStars":"⭐"}]}';
+
+    expect(JSON.stringify(hotel)).to.equal(jsonString);
+  });
 });
