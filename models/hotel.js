@@ -29,7 +29,7 @@ class Hotel {
     if(this.reviewCount() > 0) {
       let totalRating = this.reviews.reduce((acc, elem) => {
         return acc + elem.rating;
-      });
+      }, 0);
       avgRating = totalRating / this.reviewCount();
     }
 
