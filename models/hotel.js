@@ -12,6 +12,23 @@ class Hotel {
   reviewCount() {
     return this.reviews.length;
   }
+
+  /**
+   * Return the average rating for the hotel
+   * @return {number} - The average rating
+   */
+  rating() {
+    let avgRating = 0;
+
+    if(this.reviewCount() > 0) {
+      let totalRating = this.reviews.reduce((acc, elem) => {
+        return acc + elem.rating;
+      });
+      avgRating = totalRating / this.reviewCount();
+    }
+
+    return avgRating;
+  }
 }
 
 module.exports = Hotel;
