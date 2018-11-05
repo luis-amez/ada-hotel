@@ -21,6 +21,18 @@ describe('Hotel', function() {
     expect(hotel.ratingAsStars()).to.equal('');
   });
 
+  it('should take into account the hotel reviews for the averages', () => {
+    const hotel = new Hotel('Hilton Metropole', 'London');
+    const review1 = new Review(5, 'Excellent hotel, very clean', '2018-12-17');
+    const review2 = new Review(1, 'Terrible hotel, smelled of mice', '2018-01-01')
+    hotel.addReview(review1);
+    hotel.addReview(review2);
+
+    expect(hotel.reviewCount()).to.equal(2);
+    expect(hotel.rating()).to.equal(3);
+    expect(hotel.ratingAsStars()).to.equal('⭐⭐⭐');
+  });
+
   it('shoul return a url slug with the hotel name and city', () => {
     const hotel = new Hotel('Hilton Metropole', 'London');
 
