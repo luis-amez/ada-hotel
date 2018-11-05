@@ -29,4 +29,11 @@ describe('Review', function() {
 
     expect(review.ratingAsStars()).to.equal('⭐⭐⭐');
   });
+
+  it('should convert the review into a JSON string', () => {
+    const review = new Review(5, 'Excellent hotel, very clean', '2018-12-17');
+    const jsonString = '{"rating":5,"text":"Excellent hotel, very clean","date":"2018-12-17T00:00:00.000Z","ratingAsStars":"⭐⭐⭐⭐⭐"}';
+
+    expect(JSON.stringify(review)).to.equal(jsonString);
+  });
 });
