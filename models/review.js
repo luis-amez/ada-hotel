@@ -24,6 +24,19 @@ class Review {
 
     return stars;
   }
+
+  /**
+   * Returns an object with all the class properties plus the ratingAsStars as another property
+   * @return {object} - The customized object
+   */
+  toJSON() {
+    const rating = this.rating;
+    const text = this.text;
+    const date = this.date;
+    const ratingAsStars = this.ratingAsStars();
+
+    return {rating, text, date, ratingAsStars};
+  }
 }
 
 module.exports = Review;
