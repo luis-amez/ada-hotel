@@ -5,7 +5,7 @@ var Hotel = require('../models/hotel')
 
 describe('Hotel', function() {
   it('should initialize properly', () => {
-    const hotel = new Hotel("Hilton Metropole", "London");
+    const hotel = new Hotel('Hilton Metropole', 'London');
 
     expect(hotel.name).to.equal('Hilton Metropole');
     expect(hotel.city).to.equal('London');
@@ -13,10 +13,16 @@ describe('Hotel', function() {
   });
 
   it('should return 0 and empty string if there are no reviews', () => {
-    const hotel = new Hotel("Hilton Metropole", "London");
+    const hotel = new Hotel('Hilton Metropole', 'London');
 
     expect(hotel.reviewCount()).to.equal(0);
     expect(hotel.rating()).to.equal(0);
     expect(hotel.ratingAsStars()).to.equal('');
+  });
+
+  it('shoul return a url slug with the hotel name and city', () => {
+    const hotel = new Hotel('Hilton Metropole', 'London');
+
+    expect(hotel.urlSlug()).to.equal('hilton_metropole_london');
   });
 });
