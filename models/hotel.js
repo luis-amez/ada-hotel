@@ -69,6 +69,23 @@ class Hotel {
   addReview(review) {
     this.reviews.push(review);
   }
+
+  /**
+   * Returns an object with all the class properties plus
+   * the result of the methods as another properties
+   * @return {object} - The customized object
+   */
+  toJSON() {
+    const name = this.name;
+    const city = this.city;
+    const reviewCount = this.reviewCount();
+    const rating = this.rating();
+    const ratingAsStars = this.ratingAsStars();
+    const urlSlug = this.urlSlug();
+    const reviews = this.reviews.map(review => review.toJSON());
+
+    return {name, city, reviewCount, rating, ratingAsStars, urlSlug, reviews};
+  }
 }
 
 module.exports = Hotel;
