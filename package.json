@@ -1,0 +1,15 @@
+{
+  "name": "ada-hotel",
+  "version": "1.0.0",
+  "description": "Simple system for storing hotel reviews",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Luis",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
+  }
+}
