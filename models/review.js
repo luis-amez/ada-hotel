@@ -10,6 +10,20 @@ class Review {
     this.text = text;
     this.date = new Date(date);
   }
+
+  /**
+   * Returns a representation of the review rating using stars
+   * @return {string} - A string with as many stars as the review rating
+   */
+  ratingAsStars() {
+    let stars = '';
+
+    for(let i = 0; i < Math.floor(this.rating); i++) {
+      stars += '⭐';
+    }
+
+    return stars;
+  }
 }
 
 module.exports = Review;
