@@ -31,12 +31,12 @@
     "reviews": []
   },
   {
-    "name": "'Amanecer'",
-    "city": "'Barcelona'",
+    "name": "Amanecer",
+    "city": "Barcelona",
     "reviewCount": 0,
     "rating": 0,
     "ratingAsStars": "",
-    "urlSlug": "'amanecer'_'barcelona'",
+    "urlSlug": "amanecer_barcelona",
     "reviews": []
   }
 ]

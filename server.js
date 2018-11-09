@@ -25,6 +25,11 @@ app.post('/hotels', (req, res, next) => {
   res.status(201).json(hotel);
 });
 
+app.get('/hotels/:hotel_id', (req, res, next) => {
+  let hotel = hotelCollection.getHotelFromSlug(req.params.hotel_id);
+  res.status(200).json(hotel);
+});
+
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   res.status(404).json({code: 'not found'});

@@ -70,6 +70,12 @@ class HotelCollection {
 
     return hotelCollection;
   }
+
+  getHotelFromSlug(slug) {
+    return this.hotels.find((hotel) => {
+      return hotel.urlSlug() === slug;
+    })
+  }
 }
 
 module.exports = HotelCollection;
