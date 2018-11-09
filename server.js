@@ -77,6 +77,22 @@ app.post('/hotels/:hotel_id/reviews', (req, res, next) => {
   res.status(201).json(review);
 });
 
+app.get('/hotels/:hotel_id/reviews/:review_id', (req, res, next) => {
+  let hotel = hotelCollection.getHotelFromSlug(req.params.hotel_id);
+  if(!hotel) {
+    res.status(404);
+    return next(new Error('That hotel is not in our database!'));
+  }
+
+  let review = hotel.getReviewFromNaturalIndex(req.params.review_id);
+  if(!review) {
+    res.status(404);
+    return next(new Error('That review is not in our database!'));
+  }
+
+  res.status(200).json(review);
+});
+
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   res.status(404).json({code: 'not found'});

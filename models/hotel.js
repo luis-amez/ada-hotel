@@ -90,6 +90,11 @@ class Hotel {
   getReviews() {
     return this.reviews;
   }
+
+  getReviewFromNaturalIndex(arrayIndex) {
+    let naturalIndex = arrayIndex - 1;
+    return this.reviews[naturalIndex];
+  }
 }
 
 module.exports = Hotel;
