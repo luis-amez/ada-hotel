@@ -45,9 +45,7 @@ describe('HotelCollection', function() {
     hotelCollection.saveFile('./hotels-list.json')
     const loadedHotelCollection = HotelCollection.load('./hotels-list.json')
 
-    // expect(hotelCollection.saveFile('./hotels-list.json')).to.equal(true);
-    // expect(HotelCollection.load('./hotels-list.json')).to.equal(true);
-    // expect(loadedHotelCollection).to.be.a('object');
+    expect(loadedHotelCollection instanceof HotelCollection).to.equal(true);
     expect(loadedHotelCollection.hotels.length).to.equal(2);
     expect(loadedHotelCollection.hotels).to.deep.equal([hotel1, hotel2]);
   })

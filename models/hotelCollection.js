@@ -1,20 +1,40 @@
 class HotelCollection {
+  /**
+   * HotelCollection constructor
+   * @return {HotelCollection} - A list to store and manage hotels
+   */
   constructor() {
     this._hotels = [];
   }
 
+  /**
+   * Add an hotel to the collection
+   * @param {Hotel} - The hotel to be added 
+   */
   addHotel(hotel) {
     this._hotels.push(hotel);
   }
 
+  /**
+   * Returns all the hotels into the collection
+   * @return {[Hotels]} - And array with all the hotels in the collection
+   */
   get hotels() {
     return this._hotels;
   }
 
+  /**
+   * This method blocks the user to be able to access directly the 'fake' attribute 
+   * hotels avoiding that way they can overwrite the list of hotels
+   */
   set hotels(_) {
     throw new Error('You can not overwrite hotels!'); 
   }
 
+  /**
+   * Saves the collection in a file
+   * @param {string} - The path in the system to store the file
+   */
   saveFile(path) {
     const fs = require('fs');
 
@@ -26,6 +46,11 @@ class HotelCollection {
     fs.writeFileSync(path, jsonString, 'utf-8');
   }
 
+  /**
+   * Returns a new HotelCollection instance with information previously saved
+   * @param {string} path - The path for retrieving the collection from a file
+   * @returns {HotelCollection} - The collection with the data saved
+   */
   static load(path) {
     const fs = require('fs');
     const Hotel = require('./hotel');
@@ -42,7 +67,7 @@ class HotelCollection {
       });
       hotelCollection.addHotel(hotel);
     })
-    
+
     return hotelCollection;
   }
 }
