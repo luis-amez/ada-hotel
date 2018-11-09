@@ -1,9 +1,16 @@
 const express = require('express');
 const formidable = require('express-formidable');
+const HotelCollection = require('./models/hotelCollection');
 
 const app = express();
 
 app.use(formidable());
+
+let hotelCollection = HotelCollection.load('./hotels-list.json');
+
+app.get('/hotels', (req, res, next) => {
+  res.status(200).json(hotelCollection);
+});
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
