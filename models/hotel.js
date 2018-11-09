@@ -91,9 +91,17 @@ class Hotel {
     return this.reviews;
   }
 
-  getReviewFromNaturalIndex(arrayIndex) {
-    let naturalIndex = arrayIndex - 1;
-    return this.reviews[naturalIndex];
+  getReviewFromNaturalIndex(naturalIndex) {
+    let arrayIndex = naturalIndex - 1;
+    return this.reviews[arrayIndex];
+  }
+
+  deleteReviewFromNaturalIndex(naturalIndex) {
+    let arrayIndex = naturalIndex - 1;
+    let review = this.getReviewFromNaturalIndex(naturalIndex);
+    this.reviews.splice(arrayIndex, 1);
+
+    return review;
   }
 }
 

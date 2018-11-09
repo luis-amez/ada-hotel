@@ -78,12 +78,12 @@ class HotelCollection {
   }
 
   deleteHotelFromSlug(slug) {
-    let hotel = this.getHotelFromSlug(slug)
-    let indexOfHotel = this.hotels.indexOf(hotel)
+    let hotel = this.getHotelFromSlug(slug);
+    let indexOfHotel = this.hotels.indexOf(hotel);
 
-    this.hotels.splice(indexOfHotel, 1)
+    this.hotels.splice(indexOfHotel, 1);
 
-    return hotel
+    return hotel;
   }
 }
 
