@@ -76,6 +76,15 @@ class HotelCollection {
       return hotel.urlSlug() === slug;
     })
   }
+
+  deleteHotelFromSlug(slug) {
+    let hotel = this.getHotelFromSlug(slug)
+    let indexOfHotel = this.hotels.indexOf(hotel)
+
+    this.hotels.splice(indexOfHotel, 1)
+
+    return hotel
+  }
 }
 
 module.exports = HotelCollection;

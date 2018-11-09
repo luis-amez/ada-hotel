@@ -2,6 +2,7 @@ const express = require('express');
 const formidable = require('express-formidable');
 const HotelCollection = require('./models/hotelCollection');
 const Hotel = require('./models/hotel');
+const Review = require('./models/review');
 
 const app = express();
 
@@ -34,6 +35,46 @@ app.get('/hotels/:hotel_id', (req, res, next) => {
   }
 
   res.status(200).json(hotel);
+});
+
+app.delete('/hotels/:hotel_id', (req, res, next) => {
+  let hotel = hotelCollection.deleteHotelFromSlug(req.params.hotel_id);
+  if(!hotel) {
+    res.status(404);
+    return next(new Error('That hotel is not in our database!'));
+  }
+
+  hotelCollection.saveFile('./hotels-list.json');
+  res.status(200).json(hotel);
+});
+
+app.get('/hotels/:hotel_id/reviews', (req, res, next) => {
+  let hotel = hotelCollection.getHotelFromSlug(req.params.hotel_id);
+  if(!hotel) {
+    res.status(404);
+    return next(new Error('That hotel is not in our database!'));
+  }
+
+  res.status(200).json(hotel.getReviews());
+});
+
+app.post('/hotels/:hotel_id/reviews', (req, res, next) => {
+  let hotel = hotelCollection.getHotelFromSlug(req.params.hotel_id);
+  if(!hotel) {
+    res.status(404);
+    return next(new Error('That hotel is not in our database!'));
+  }
+  
+  if(!req.fields.rating || !req.fields.text || !req.fields.date) {
+    res.status(422);
+    return next(new Error('Rating, text and date required!'));
+  }
+
+  let review = new Review(req.fields.rating, req.fields.text, req.fields.date);
+  hotel.addReview(review);
+  hotelCollection.saveFile('./hotels-list.json');
+
+  res.status(201).json(review);
 });
 
 // catch 404 and forward to error handler

@@ -86,6 +86,10 @@ class Hotel {
 
     return {name, city, reviewCount, rating, ratingAsStars, urlSlug, reviews};
   }
+
+  getReviews() {
+    return this.reviews;
+  }
 }
 
 module.exports = Hotel;

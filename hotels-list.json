@@ -33,10 +33,17 @@
   {
     "name": "Amanecer",
     "city": "Barcelona",
-    "reviewCount": 0,
-    "rating": 0,
-    "ratingAsStars": "",
+    "reviewCount": 1,
+    "rating": 4,
+    "ratingAsStars": "⭐⭐⭐⭐",
     "urlSlug": "amanecer_barcelona",
-    "reviews": []
+    "reviews": [
+      {
+        "rating": "4",
+        "text": "I really loved the breakfast",
+        "date": "2018-11-09T00:00:00.000Z",
+        "ratingAsStars": "⭐⭐⭐⭐"
+      }
+    ]
   }
 ]
