@@ -15,6 +15,7 @@ app.get('/hotels', (req, res, next) => {
 
 app.post('/hotels', (req, res, next) => {
   if(!req.fields.name || !req.fields.city) {
+    res.status(422);
     return next(new Error('Name and city required!'));
   }
 
@@ -27,6 +28,11 @@ app.post('/hotels', (req, res, next) => {
 
 app.get('/hotels/:hotel_id', (req, res, next) => {
   let hotel = hotelCollection.getHotelFromSlug(req.params.hotel_id);
+  if(!hotel) {
+    res.status(404);
+    return next(new Error('That hotel is not in our database!'));
+  }
+
   res.status(200).json(hotel);
 });
 
@@ -41,7 +47,7 @@ app.use((err, req, res, next) => {
 
   // only render if the error ocurred before sending the response
   if (!res.headersSent) {
-    res.status(500).json({code: 'unexpected'});
+    res.json({code: err.message});
   }
 });
 
